@@ -6,5 +6,7 @@ authors = ["Katrina Brock <keb266@cornell.edu>"]
 [dependencies]
 diesel = { version = "0.15.2", features = ["postgres"] , git = "https://github.com/diesel-rs/diesel.git"}
 diesel_codegen = { version = "0.15.0", features = ["postgres"] }
+rocket = { git = "https://github.com/SergioBenitez/Rocket.git" }
+rocket_codegen = { git = "https://github.com/SergioBenitez/Rocket.git" }
 dotenv = "0.8.0"
 
