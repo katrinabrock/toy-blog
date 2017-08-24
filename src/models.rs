@@ -1,13 +1,14 @@
 use schema::posts;
+extern crate serde;
 
-#[derive(Queryable)]
+
+#[derive(Queryable, Debug, Serialize)]
 pub struct Post {
     pub id: i32,
     pub title: String,
     pub body: String,
     pub published: bool,
 }
-
 
 #[derive(Insertable)]
 #[table_name="posts"]

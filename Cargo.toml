@@ -4,9 +4,17 @@ version = "0.1.0"
 authors = ["Katrina Brock <keb266@cornell.edu>"]
 
 [dependencies]
-diesel = { version = "0.15.2", features = ["postgres"] , git = "https://github.com/diesel-rs/diesel.git"}
-diesel_codegen = { version = "0.15.0", features = ["postgres"] }
-rocket = { git = "https://github.com/SergioBenitez/Rocket.git" }
-rocket_codegen = { git = "https://github.com/SergioBenitez/Rocket.git" }
+# diesel = { features = ["postgres"] , git = "https://github.com/diesel-rs/diesel.git"}
+diesel = { version = "0.14", features = ["postgres"] }
+# diesel_codegen = { features = ["postgres"] , git = "https://github.com/diesel-rs/diesel.git"}
+diesel_codegen = { version = "0.14", features = ["postgres"] }
+serde = "1.0"
+serde_derive = "1.0"
+rocket = { path = "/home/kebrock/Rocket/lib" }
+rocket_codegen = { path = "/home/kebrock/Rocket/codegen" }
 dotenv = "0.8.0"
 
+[dependencies.rocket_contrib]
+path = "/home/kebrock/Rocket/contrib"
+default_features = false
+features = [ "tera_templates" ]
