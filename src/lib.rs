@@ -1,3 +1,5 @@
+#![feature(plugin, custom_derive)]
+#![plugin(rocket_codegen)]
 #[macro_use] extern crate diesel;
 #[macro_use] extern crate diesel_codegen;
 #[macro_use] extern crate serde_derive;
@@ -5,6 +7,7 @@ extern crate dotenv;
 
 pub mod schema;
 pub mod models;
+pub mod show_posts;
 
 use diesel::prelude::*;
 use diesel::pg::PgConnection;
