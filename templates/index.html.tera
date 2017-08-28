@@ -4,6 +4,13 @@
     <title>Diesel-Rocket Blog Example</title>
   </head>
   <body>
+     <form action="/" method="post">
+          <input type="text" placeholder="Title"
+            name="title" id="title" value=""/>
+          <input type="text" placeholder="body"
+            name="body" id="body" value=""/>
+          <input type="submit" value="Save as draft">
+	</form>
     <h1>{{ postcount }}</h1>
     {% for post in posts%}
       <h3>{{ post.title }}</h3>

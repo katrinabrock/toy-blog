@@ -3,6 +3,7 @@
 #[macro_use] extern crate diesel;
 #[macro_use] extern crate diesel_codegen;
 #[macro_use] extern crate serde_derive;
+extern crate rocket;
 extern crate dotenv;
 
 pub mod schema;
@@ -25,7 +26,7 @@ pub fn establish_connection() -> PgConnection {
         .expect(&format!("Error connecting to {}", database_url))
 }
 
-pub fn create_post(conn: &PgConnection, title: &str, body: &str) -> Post {
+pub fn create_post(conn: &PgConnection, title: String, body: String) -> Post {
     use schema::posts;
 
     let new_post = NewPost {

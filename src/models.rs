@@ -1,5 +1,6 @@
 use schema::posts;
 extern crate serde;
+extern crate diesel;
 
 
 #[derive(Queryable, Debug, Serialize)]
@@ -10,9 +11,9 @@ pub struct Post {
     pub published: bool,
 }
 
-#[derive(Insertable)]
+#[derive(Insertable, FromForm)]
 #[table_name="posts"]
-pub struct NewPost<'a> {
-    pub title: &'a str,
-    pub body: &'a str,
+pub struct NewPost {
+    pub title: String,
+    pub body: String,
 }
