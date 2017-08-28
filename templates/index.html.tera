@@ -15,6 +15,9 @@
     {% for post in posts%}
       <h3>{{ post.title }}</h3>
       <p>{{ post.body }}</p>
+      <form action="/publish/{{ post.id }}" method="post">
+        <input type="submit" value="Publish" name="publish">
+	  <form>
     {% endfor %}
   </body>
 </html>

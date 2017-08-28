@@ -11,8 +11,10 @@ use rocket::request::{Form};
 use rocket::response::{Flash, Redirect};
 use std::path::{Path, PathBuf};
 use rocket::response::NamedFile;
-use diesel_demo::{establish_connection, create_post};
 use diesel_demo::models::NewPost;
+use diesel::prelude::*;
+use diesel_demo::*;
+use diesel_demo::models::Post;
 
 
 #[cfg(test)] mod tests;
@@ -37,10 +39,25 @@ fn new_post(post_form: Form<NewPost>) -> Flash<Redirect>{
 	Flash::success(Redirect::to("/"), "")
 }
 
+#[post("/<id>")]
+fn publish(id: i32) -> Flash<Redirect>{
+    use diesel_demo::schema::posts::dsl::{posts, published};
+
+    let connection = establish_connection();
+
+    let post = diesel::update(posts.find(id))
+        .set(published.eq(true))
+        .get_result::<Post>(&connection)
+        .expect(&format!("Unable to find post {}", id));
+	Flash::success(Redirect::to("../.."), "")
+}
+
+
 
 fn main() {
     rocket::ignite()
         .mount("/", routes![show_all, new_post, all])
+        .mount("/publish/", routes![publish])
         .attach(Template::fairing())
         .launch();
 }

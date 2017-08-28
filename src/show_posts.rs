@@ -16,7 +16,8 @@ pub fn show_all() -> Template {
     use schema::posts::dsl::*;
 
     let connection = super::establish_connection();
-    let results = posts.filter(published.eq(true))
+    let results = posts 
+        //.filter(published.eq(true))
         .limit(5)
         .load::<Post>(&connection)
         .expect("Error loading posts");
