@@ -19,11 +19,11 @@
         {% if not post.published %}
           <form action="/publish/{{ post.id }}" method="post">
             <input type="submit" value="Publish" name="publish">
-          <form>
+          </form>
         {% endif %}
           <form action="/delete/{{ post.id }}" method="post">
             <input type="submit" value="Delete" name="delete">
-          <form>
+          </form>
     {% endfor %}
   </body>
 </html>
