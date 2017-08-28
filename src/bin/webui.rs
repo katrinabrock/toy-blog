@@ -52,12 +52,23 @@ fn publish(id: i32) -> Flash<Redirect>{
 	Flash::success(Redirect::to("../.."), "")
 }
 
+#[post("/<id>")]
+fn delete(id: i32) -> Flash<Redirect>{
+    use diesel_demo::schema::posts::dsl::posts;
+    let connection = establish_connection();
+    let num_deleted = diesel::delete(posts.find(id))
+        .execute(&connection)
+        .expect("Error deleting posts");
+	Flash::success(Redirect::to("../.."), "")
+}
+
 
 
 fn main() {
     rocket::ignite()
         .mount("/", routes![show_all, new_post, all])
         .mount("/publish/", routes![publish])
+        .mount("/delete/", routes![delete])
         .attach(Template::fairing())
         .launch();
 }

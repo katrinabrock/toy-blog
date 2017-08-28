@@ -14,12 +14,16 @@
     <h1>{{ postcount }}</h1>
     {% for post in posts%}
       <h3>{{ post.title }}</h3>
+      <h3>{{ post.id }}</h3>
       <p>{{ post.body }}</p>
         {% if not post.published %}
           <form action="/publish/{{ post.id }}" method="post">
             <input type="submit" value="Publish" name="publish">
           <form>
         {% endif %}
+          <form action="/delete/{{ post.id }}" method="post">
+            <input type="submit" value="Delete" name="delete">
+          <form>
     {% endfor %}
   </body>
 </html>
