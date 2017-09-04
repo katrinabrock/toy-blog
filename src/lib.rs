@@ -8,7 +8,8 @@ extern crate dotenv;
 
 pub mod schema;
 pub mod models;
-pub mod show_posts;
+pub mod controllers;
+pub mod views;
 
 use diesel::prelude::*;
 use diesel::pg::PgConnection;
@@ -26,15 +27,3 @@ pub fn establish_connection() -> PgConnection {
         .expect(&format!("Error connecting to {}", database_url))
 }
 
-pub fn create_post(conn: &PgConnection, title: String, body: String) -> Post {
-    use schema::posts;
-
-    let new_post = NewPost {
-        title: title,
-        body: body,
-    };
-
-    diesel::insert(&new_post).into(posts::table)
-        .get_result(conn)
-        .expect("Error saving new post")
-}

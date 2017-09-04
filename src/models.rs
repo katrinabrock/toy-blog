@@ -17,3 +17,9 @@ pub struct NewPost {
     pub title: String,
     pub body: String,
 }
+
+#[derive(Debug, Serialize)]
+pub struct Context {
+    pub postcount: String,
+    pub posts: Vec<Post>,
+}

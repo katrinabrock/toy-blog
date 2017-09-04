@@ -3,16 +3,10 @@ extern crate serde;
 
 use diesel::prelude::*;
 use self::rocket_contrib::Template;
-use models::Post;
-
-#[derive(Debug, Serialize)]
-pub struct Context {
-    pub postcount: String,
-    pub posts: Vec<Post>,
-}
+use models::{Post, Context};
 
 
-pub fn show_all() -> Template {
+pub fn show_all() -> Context {
     use schema::posts::dsl::*;
 
     let connection = super::establish_connection();
@@ -22,6 +16,6 @@ pub fn show_all() -> Template {
         .expect("Error loading posts");
 
     let postcount = format!("Displaying {} posts", results.len());
-    let context = Context{ postcount: postcount, posts: results};
-    Template::render("index", context)
+
+    Context{ postcount: postcount, posts: results}
 }
