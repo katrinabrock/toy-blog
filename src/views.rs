@@ -2,7 +2,6 @@ extern crate rocket_contrib;
 extern crate serde;
 
 use diesel::prelude::*;
-use self::rocket_contrib::Template;
 use models::{Post, Context};
 
 

@@ -16,8 +16,6 @@ use diesel::pg::PgConnection;
 use dotenv::dotenv;
 use std::env;
 
-use self::models::{Post, NewPost};
-
 pub fn establish_connection() -> PgConnection {
     dotenv().ok();
 

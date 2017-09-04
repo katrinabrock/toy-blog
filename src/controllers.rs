@@ -1,9 +1,10 @@
 extern crate diesel;
 
-use schema::posts::dsl::{posts, published};
-use models::*;
 use diesel::prelude::*;
 use diesel::pg::PgConnection;
+
+use schema::posts::dsl::{posts, published};
+use models::{Post, NewPost};
 
 pub fn create_post(conn: &PgConnection, title: String, body: String) -> Post {
     use schema::posts;

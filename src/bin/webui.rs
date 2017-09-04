@@ -1,9 +1,7 @@
 #![feature(plugin, custom_derive)]
 #![plugin(rocket_codegen)]
 
-#[macro_use] extern crate diesel;
-#[macro_use] extern crate diesel_codegen;
-#[macro_use] extern crate serde_derive;
+extern crate diesel;
 extern crate diesel_demo;
 extern crate rocket;
 extern crate rocket_contrib;
@@ -14,12 +12,11 @@ use rocket::request::{Form};
 use rocket::response::{Flash, Redirect};
 use std::path::{Path, PathBuf};
 use rocket::response::NamedFile;
-use diesel_demo::models::NewPost;
-use diesel::prelude::*;
+
 use diesel_demo::*;
-use diesel_demo::controllers::*;
+use diesel_demo::models::NewPost;
 use diesel_demo::views::show_all;
-use diesel_demo::models::Post;
+use diesel_demo::controllers::*;
 
 
 #[cfg(test)] mod tests;
