@@ -35,7 +35,7 @@ fn new_post(post_form: Form<NewPost>) -> Flash<Redirect>{
 
 	let post_form = post_form.into_inner();
 
-    let post = create_post(&connection, post_form.title, post_form.body);
+    create_post(&connection, post_form.title, post_form.body);
 	Flash::success(Redirect::to("/"), "")
 }
 
@@ -45,7 +45,7 @@ fn publish(id: i32) -> Flash<Redirect>{
 
     let connection = establish_connection();
 
-    let post = diesel::update(posts.find(id))
+    diesel::update(posts.find(id))
         .set(published.eq(true))
         .get_result::<Post>(&connection)
         .expect(&format!("Unable to find post {}", id));
@@ -56,7 +56,7 @@ fn publish(id: i32) -> Flash<Redirect>{
 fn delete(id: i32) -> Flash<Redirect>{
     use diesel_demo::schema::posts::dsl::posts;
     let connection = establish_connection();
-    let num_deleted = diesel::delete(posts.find(id))
+    diesel::delete(posts.find(id))
         .execute(&connection)
         .expect("Error deleting posts");
 	Flash::success(Redirect::to("../.."), "")
