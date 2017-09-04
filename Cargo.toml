@@ -4,9 +4,7 @@ version = "0.1.0"
 authors = ["Katrina Brock <keb266@cornell.edu>"]
 
 [dependencies]
-# diesel = { features = ["postgres"] , git = "https://github.com/diesel-rs/diesel.git"}
 diesel = { version = "0.14", features = ["postgres"] }
-# diesel_codegen = { features = ["postgres"] , git = "https://github.com/diesel-rs/diesel.git"}
 diesel_codegen = { version = "0.14", features = ["postgres"] }
 serde = "1.0"
 serde_derive = "1.0"
