@@ -17,7 +17,6 @@ pub fn show_all() -> Template {
 
     let connection = super::establish_connection();
     let results = posts 
-        //.filter(published.eq(true))
         .limit(5)
         .load::<Post>(&connection)
         .expect("Error loading posts");
