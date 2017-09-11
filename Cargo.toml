@@ -8,11 +8,11 @@ diesel = { version = "0.14", features = ["postgres"] }
 diesel_codegen = { version = "0.14", features = ["postgres"] }
 serde = "1.0"
 serde_derive = "1.0"
-rocket = { path = "/home/kebrock/Rocket/lib" }
-rocket_codegen = { path = "/home/kebrock/Rocket/codegen" }
+rocket = "0.3.2"
+rocket_codegen = "0.3.2"
 dotenv = "0.8.0"
 
 [dependencies.rocket_contrib]
-path = "/home/kebrock/Rocket/contrib"
+version = "0.3.2"
 default_features = false
 features = [ "tera_templates" ]
